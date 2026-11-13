@@ -1,1 +1,2 @@
 export const Roles={admin:'材料负责人',analyst:'联合量研究员',viewer:'补测阅读者'} as const;export const RunStatus={queued:'等待拟合',running:'计算中',completed:'已完成',failed:'失败'} as const;export const ReviewStatus={submitted:'待审阅',approved:'已批准',rejected:'退回补测'} as const;export const SplitRoles={train:'训练 / 只拟合',cal:'校准 / 固定参照',test:'测试 / 上尾评分'} as const;
+export const MissingPolicies={reject:'严格拒绝缺测',impute_train_median:'训练中位数补齐'} as const;

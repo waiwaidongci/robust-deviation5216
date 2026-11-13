@@ -4,7 +4,8 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
-from .config.database import Base,engine
+from .config.database import engine
+from .config.schema_upgrade import ensure_schema
 from .config.settings import SEED_DEMO
 from . import models
 from .routes import auth,studies,windows,features,runs,notes,audits
@@ -13,7 +14,7 @@ from .middlewares.rate_limit import RateLimitMiddleware
 from .services.run_service import queue
 @asynccontextmanager
 async def lifespan(app):
-    Base.metadata.create_all(engine)
+    ensure_schema(engine)
     if SEED_DEMO:
         try:
             from scripts.seed_demo import seed

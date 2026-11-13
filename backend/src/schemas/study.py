@@ -8,5 +8,6 @@ class StudyOutput(BaseModel):
     default_alpha:float
     counts:dict
     feature_count:int
+    missing_cells:int
     supported:bool
     reason:str
